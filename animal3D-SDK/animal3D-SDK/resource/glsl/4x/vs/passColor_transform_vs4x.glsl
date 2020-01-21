@@ -32,12 +32,14 @@
 //	5) assign vertex color input to varying
 
 layout (location = 0) in vec4 aPosition;
-layout (location = 3) in vec4 aColor; // reference the attribute from the cpu (I believe)
+layout (location = 3) in vec4 aColor; // reference the attribute from the framework/cpu (I believe)
 out vec4 vColor; // create a new 'outbound' varying value
 uniform mat4 uMVP; // refence the predefined uniform 'uMVP'
+
 void main()
 {
 	// DUMMY OUTPUT: directly assign input position to output position
-	vColor = aColor; // set the varying value to the attribute value
 	gl_Position = uMVP * aPosition;
+	vColor = aColor; // set the varying value to the attribute value
+
 }
