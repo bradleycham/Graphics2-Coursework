@@ -28,8 +28,11 @@
 #define MAX_INSTANCES 1024
 
 layout (location = 0) in vec4 aPosition;
-
+layout (location = 3) in vec4 aColor;
+out vec4 vColor;
+uniform mat4 uMVP;
 void main()
 {
-	gl_Position = aPosition;
+	vColor = aColor;
+	gl_Position = uMVP * aPosition;
 }

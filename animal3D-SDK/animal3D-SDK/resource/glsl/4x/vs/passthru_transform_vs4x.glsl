@@ -29,9 +29,11 @@
 //	2) correctly transform input position by MVP matrix
 
 layout (location = 0) in vec4 aPosition;
+uniform mat4 uMVP;//reference the predefined Uniform 'uMVP'
 
 void main()
 {
 	// DUMMY OUTPUT: directly assign input position to output position
-	gl_Position = aPosition;
+	//vec4 position = uMVP * aPosition // original solution, cut the extra step
+	gl_Position = uMVP * aPosition; // using the uMVP uniform that is defines in the c++ code
 }
